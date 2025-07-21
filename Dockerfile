@@ -21,11 +21,14 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-# 👇 Add this line to copy your Laravel source code
+# Copy source code
 COPY . .
 
-# Expose the Laravel port
+# ✅ Chạy composer install
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Mở cổng 8000
 EXPOSE 8000
 
-# Start Laravel dev server
+# Run Laravel dev server
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
