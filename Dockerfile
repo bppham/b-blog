@@ -10,7 +10,9 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip \
     git \
-    curl
+    curl \
+    nodejs \
+    npm
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
@@ -24,11 +26,17 @@ WORKDIR /var/www
 # Copy source code
 COPY . .
 
-# ✅ Chạy composer install
+# Install PHP packages
 RUN composer install --no-interaction --prefer-dist --optimize-autoloader
 
-# Mở cổng 8000
+# OPTIONAL: Build Vite (nếu bạn dùng Vite)
+RUN npm install && npm run build
+
+# Copy start script & make it executable
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
 EXPOSE 8000
 
-# Run Laravel dev server
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+# Start Laravel via start.sh
+CMD ["/start.sh"]
