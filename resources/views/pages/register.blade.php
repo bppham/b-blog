@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Sign up</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
     @vite('resources/css/app.css')
+    @vite('resources/js/app.js')
 </head>
 
 <body class="bg-white text-gray-900 h-full">
