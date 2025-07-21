@@ -21,4 +21,11 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 # Set working directory
 WORKDIR /var/www
 
-CMD ["php-fpm"]
+# 👇 Add this line to copy your Laravel source code
+COPY . .
+
+# Expose the Laravel port
+EXPOSE 8000
+
+# Start Laravel dev server
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
