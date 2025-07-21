@@ -1,0 +1,1 @@
+import{$ as d}from"./jquery-Da9eaIsk.js";import"./_commonjsHelpers-CqkleIqs.js";d(document).ready(function(){var e,t;localStorage.getItem("token")||((e=document.getElementById("user-menu-button"))==null||e.classList.add("hidden"),(t=document.getElementById("user-dropdown"))==null||t.classList.add("hidden"))});

@@ -1,0 +1,1 @@
+function s(i){const n=new Date(i),o=new Date-n,e=Math.floor(o/(1e3*60*60*24)),a=n.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"});let t="";return e===0?t="Hôm nay":e===1?t="Hôm qua":t=`${e} ngày trước`,`${a} | ${t}`}export{s as f};
