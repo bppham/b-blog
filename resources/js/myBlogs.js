@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { formatTime } from "./utils/helper";
 import { showToast } from "./utils/toast";
-import { apiRequest } from "./utils/api";
+import { apiRequest, API_BASE_URL } from "./utils/api";
 
 $(document).ready(function () {
     const $blogList = $("#blog-list");
@@ -15,7 +15,7 @@ $(document).ready(function () {
         $blogList.html("<p class='text-gray-500'>Loading ...</p>");
 
         apiRequest({
-            url: `http://localhost:8000/api/my-blogs?page=${page}&per_page=${perPage}`,
+            url: `${API_BASE_URL}/my-blogs?page=${page}&per_page=${perPage}`,
             success: function (response) {
                 const blogs = response.data.data;
                 const current_page = response.data.current_page;
@@ -95,7 +95,7 @@ $(document).ready(function () {
         if (!confirmDelete) return;
 
         apiRequest({
-            url: `http://localhost:8000/api/blogs/${blogId}`,
+            url: `${API_BASE_URL}/blogs/${blogId}`,
             method: "DELETE",
             success: function (res) {
                 if (res.success) {

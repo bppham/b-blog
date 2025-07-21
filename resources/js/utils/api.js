@@ -27,3 +27,5 @@ export function apiRequest({
             },
     });
 }
+
+export const API_BASE_URL = "https://b-bloging.onrender.com/api";

@@ -1,6 +1,6 @@
 import $ from "jquery";
 import { showToast } from "./utils/toast";
-import { apiRequest } from "./utils/api";
+import { apiRequest, API_BASE_URL } from "./utils/api";
 import "ckeditor4";
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -22,7 +22,7 @@ $(document).ready(function () {
         const content = CKEDITOR.instances.editor.getData();
 
         apiRequest({
-            url: "http://localhost:8000/api/blogs",
+            url: `${API_BASE_URL}/blogs`,
             method: "POST",
             data: { title, description, content },
             success: function (data) {
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
         // Load blog data
         apiRequest({
-            url: `http://localhost:8000/api/blogs/${blogId}`,
+            url: `${API_BASE_URL}/blogs/${blogId}`,
             method: "GET",
             success: function (res) {
                 if (res.success) {
@@ -85,7 +85,7 @@ $(document).ready(function () {
             const content = CKEDITOR.instances.editor.getData();
 
             apiRequest({
-                url: `http://localhost:8000/api/blogs/${blogId}`,
+                url: `${API_BASE_URL}/blogs/${blogId}`,
                 method: "PUT",
                 data: { title, description, content },
                 success: function (res) {
@@ -114,7 +114,7 @@ $(document).ready(function () {
         const blogId = pathParts[pathParts.length - 1];
 
         apiRequest({
-            url: `http://localhost:8000/api/blogs/${blogId}`,
+            url: `${API_BASE_URL}/blogs/${blogId}`,
             method: "GET",
             success: function (res) {
                 if (res.success) {

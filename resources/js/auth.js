@@ -1,6 +1,6 @@
 import $ from "jquery";
 import { showToast } from "./utils/toast";
-import { apiRequest } from "./utils/api";
+import { apiRequest, API_BASE_URL } from "./utils/api";
 
 $(document).ready(function () {
     // Submit Đăng ký
@@ -15,7 +15,7 @@ $(document).ready(function () {
         };
 
         apiRequest({
-            url: "http://localhost:8000/api/register",
+            url: `${API_BASE_URL}/register`,
             method: "POST",
             data: payload,
             success: function (data) {
@@ -43,7 +43,7 @@ $(document).ready(function () {
         };
 
         apiRequest({
-            url: "http://localhost:8000/api/login",
+            url: `${API_BASE_URL}/login`,
             method: "POST",
             data: payload,
             success: function (data) {

@@ -1,7 +1,7 @@
 import $ from "jquery";
 import { formatTime } from "./utils/helper";
 import { showToast } from "./utils/toast";
-import { apiRequest } from "./utils/api";
+import { apiRequest, API_BASE_URL } from "./utils/api";
 
 $(document).ready(function () {
     const $blogList = $("#blog-list");
@@ -15,7 +15,7 @@ $(document).ready(function () {
         $blogList.html("<p class='text-gray-500'>Đang tải dữ liệu...</p>");
 
         apiRequest({
-            url: `http://localhost:8000/api/blogs?page=${page}&per_page=${perPage}`,
+            url: `${API_BASE_URL}/blogs?page=${page}&per_page=${perPage}`,
             method: "GET",
             success: function (response) {
                 const blogs = response.data.data;
